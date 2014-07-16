@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  BaseCollectionViewCell.h
 //  BaseCollectionView
 //
 //  Created by Tim on 16/07/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
-
+@interface BaseCollectionViewCell : UICollectionViewCell
+@property (nonatomic, copy) NSString *contentString;
 @end
-
