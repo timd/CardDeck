@@ -1,4 +1,4 @@
-BaseCollectionView
-==================
+CardDeck
+========
 
-A minimally-functional iPad-based UICollectionView project, for use as a base project for experimentation
+Custom UICollectionView - CardDeck
