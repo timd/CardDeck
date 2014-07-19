@@ -66,8 +66,11 @@
 }
 
 - (void)setupCollectionView {
+    
+    // Set up cards
     [self.collectionView registerClass:[CardDeckCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
     
+    // Set up layout
     self.cardLayout = [[CardDeckLayout alloc] init];
     [self.cardLayout setItemSize:CGSizeMake(150.0f, 150.0f)];
     [self.cardLayout setCenterDelta:100];
@@ -76,6 +79,7 @@
     
     [self.collectionView setContentInset:UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f)];
     
+    // Add pan handler to deal with touches
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
     [self.collectionView addGestureRecognizer:panRecognizer];
 }
@@ -83,17 +87,16 @@
 #pragma mark - UICollectionView methods
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    [self.cardLayout invalidateLayout];
     return [self.sectionsArray count];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-
     NSMutableArray *innerArray = [self.sectionsArray objectAtIndex:section];
     return [innerArray count];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+
     CardDeckCell *cell = (CardDeckCell *)[self.collectionView dequeueReusableCellWithReuseIdentifier:@"CellIdentifier" forIndexPath:indexPath];
     
     NSMutableArray *innerArray = [self.sectionsArray objectAtIndex:indexPath.section];
@@ -114,8 +117,11 @@
 
 -(void)didPan:(UIPanGestureRecognizer *)panRecognizer {
     
+    // Handle touch events from the pan gesture recognizer
+    
     CGPoint locationPoint = [panRecognizer locationInView:self.collectionView];
     
+    // Deal with a new touch session
     if (panRecognizer.state == UIGestureRecognizerStateBegan) {
         
         // Get a reference to the cell that's being "moved"
@@ -147,13 +153,15 @@
         
     }
     
+    // Handle an existing touch session to move the card
     if (panRecognizer.state == UIGestureRecognizerStateChanged) {
         [self.movingCellImage setCenter:locationPoint];
     }
     
+    // Handle the end of the touch session
     if (panRecognizer.state == UIGestureRecognizerStateEnded) {
 
-        // Figure out where the card was dropped
+        // Figure out where the card was 'dropped'
         NSInteger dropQuadrant = [self detectWhichQuadrantForDropCoordinates:locationPoint];
         
         // If it was dropped in the SAME quadrant, then pretend nothing ever happened
@@ -213,7 +221,6 @@
 }
 
 -(void)moveCellAtIndexPath:(NSIndexPath *)oldIndexPath toQuadrant:(NSInteger)quadrant {
-
     
     // Create new index path
     // Get current count of items in the recipient array
@@ -243,9 +250,7 @@
     } completion:^(BOOL finished) {
         //
     }];
-    
 
 }
-
 
 @end

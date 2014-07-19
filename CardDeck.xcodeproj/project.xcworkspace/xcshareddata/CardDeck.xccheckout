@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>ACF5FA28-A552-4461-8773-B57CA2996644</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CardDeck</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B16761CA-D0BB-4374-AC46-F792675F4878</key>
+		<string>ssh://github.com/timd/CardDeck.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CardDeck.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B16761CA-D0BB-4374-AC46-F792675F4878</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/timd/CardDeck.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B16761CA-D0BB-4374-AC46-F792675F4878</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B16761CA-D0BB-4374-AC46-F792675F4878</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CardDeck</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -26,7 +26,8 @@
 
 -(void)prepareLayout {
 
-    // Clear out any old attributes
+    // Clear out any old attributes, then make a copy of any
+    // preexisting ones
     [self.previousAttributesArray removeAllObjects];
     [self.previousAttributesArray addObjectsFromArray:self.attributesArray];
     [self.attributesArray removeAllObjects];
@@ -64,6 +65,8 @@
             
             if (indexOfMatchingAttributes == NSNotFound) {
 
+                // There aren't any prexisting attributes, so we need to
+                // calculate them from scratch
                 attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPathForItem];
                 
                 // now calculate center
@@ -89,9 +92,7 @@
                 }
                 
                 // Calculate rotation
-                
                 attributes.transform3D = CATransform3DMakeRotation([self rotationAngle], 0.0, 0.0, 1.0);
-                //            attributes.transform = CGAffineTransformMakeRotation([self rotationAngle]);
                 
                 // Set zIndex
                 attributes.zIndex = itemCount;

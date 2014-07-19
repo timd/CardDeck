@@ -39,6 +39,7 @@
                             <constraint firstAttribute="bottom" secondItem="BbI-mg-OJt" secondAttribute="bottom" id="oMr-Ea-Y8j"/>
                             <constraint firstItem="BbI-mg-OJt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uzA-Iq-rte"/>
                         </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
