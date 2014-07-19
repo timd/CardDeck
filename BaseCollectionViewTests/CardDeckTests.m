@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface BaseCollectionViewTests : XCTestCase
+@interface CardDeckTests : XCTestCase
 
 @end
 
-@implementation BaseCollectionViewTests
+@implementation CardDeckTests
 
 - (void)setUp {
     [super setUp];

@@ -12,10 +12,11 @@
 		22B9EF8D1976AACA00E0CC45 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B9EF8C1976AACA00E0CC45 /* MainViewController.m */; };
 		22B9EF901976AACA00E0CC45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22B9EF8E1976AACA00E0CC45 /* Main.storyboard */; };
 		22B9EF921976AACA00E0CC45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22B9EF911976AACA00E0CC45 /* Images.xcassets */; };
-		22B9EF9E1976AACB00E0CC45 /* BaseCollectionViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B9EF9D1976AACB00E0CC45 /* BaseCollectionViewTests.m */; };
-		22B9EFAA1976ACCC00E0CC45 /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B9EFA81976ACCC00E0CC45 /* BaseCollectionViewCell.m */; };
-		22B9EFAB1976ACCC00E0CC45 /* BaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B9EFA91976ACCC00E0CC45 /* BaseCollectionViewCell.xib */; };
+		22B9EF9E1976AACB00E0CC45 /* CardDeckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B9EF9D1976AACB00E0CC45 /* CardDeckTests.m */; };
+		22B9EFAA1976ACCC00E0CC45 /* CardDeckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B9EFA81976ACCC00E0CC45 /* CardDeckCell.m */; };
+		22B9EFAB1976ACCC00E0CC45 /* CardDeckCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22B9EFA91976ACCC00E0CC45 /* CardDeckCell.xib */; };
 		22B9EFB11976AF0C00E0CC45 /* CollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B9EFB01976AF0C00E0CC45 /* CollectionViewFlowLayout.m */; };
+		22BBFF1D19795946001F5CF0 /* CardDeckLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BBFF1C19795946001F5CF0 /* CardDeckLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		22B9EF811976AACA00E0CC45 /* BaseCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22B9EF811976AACA00E0CC45 /* CardDeck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardDeck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B9EF851976AACA00E0CC45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22B9EF861976AACA00E0CC45 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		22B9EF881976AACA00E0CC45 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -38,14 +39,16 @@
 		22B9EF8C1976AACA00E0CC45 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		22B9EF8F1976AACA00E0CC45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22B9EF911976AACA00E0CC45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		22B9EF971976AACB00E0CC45 /* BaseCollectionViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaseCollectionViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22B9EF971976AACB00E0CC45 /* CardDeckTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardDeckTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22B9EF9C1976AACB00E0CC45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22B9EF9D1976AACB00E0CC45 /* BaseCollectionViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewTests.m; sourceTree = "<group>"; };
-		22B9EFA71976ACCC00E0CC45 /* BaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewCell.h; sourceTree = "<group>"; };
-		22B9EFA81976ACCC00E0CC45 /* BaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewCell.m; sourceTree = "<group>"; };
-		22B9EFA91976ACCC00E0CC45 /* BaseCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseCollectionViewCell.xib; sourceTree = "<group>"; };
+		22B9EF9D1976AACB00E0CC45 /* CardDeckTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardDeckTests.m; sourceTree = "<group>"; };
+		22B9EFA71976ACCC00E0CC45 /* CardDeckCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDeckCell.h; sourceTree = "<group>"; };
+		22B9EFA81976ACCC00E0CC45 /* CardDeckCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDeckCell.m; sourceTree = "<group>"; };
+		22B9EFA91976ACCC00E0CC45 /* CardDeckCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardDeckCell.xib; sourceTree = "<group>"; };
 		22B9EFAF1976AF0C00E0CC45 /* CollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		22B9EFB01976AF0C00E0CC45 /* CollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		22BBFF1B19795946001F5CF0 /* CardDeckLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDeckLayout.h; sourceTree = "<group>"; };
+		22BBFF1C19795946001F5CF0 /* CardDeckLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDeckLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +72,8 @@
 		22B9EF781976AACA00E0CC45 = {
 			isa = PBXGroup;
 			children = (
-				22B9EF831976AACA00E0CC45 /* BaseCollectionView */,
-				22B9EF9A1976AACB00E0CC45 /* BaseCollectionViewTests */,
+				22B9EF831976AACA00E0CC45 /* CardDeck */,
+				22B9EF9A1976AACB00E0CC45 /* CardDeckTests */,
 				22B9EF821976AACA00E0CC45 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,13 +81,13 @@
 		22B9EF821976AACA00E0CC45 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				22B9EF811976AACA00E0CC45 /* BaseCollectionView.app */,
-				22B9EF971976AACB00E0CC45 /* BaseCollectionViewTests.xctest */,
+				22B9EF811976AACA00E0CC45 /* CardDeck.app */,
+				22B9EF971976AACB00E0CC45 /* CardDeckTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		22B9EF831976AACA00E0CC45 /* BaseCollectionView */ = {
+		22B9EF831976AACA00E0CC45 /* CardDeck */ = {
 			isa = PBXGroup;
 			children = (
 				22B9EF8E1976AACA00E0CC45 /* Main.storyboard */,
@@ -95,6 +98,7 @@
 				22B9EF911976AACA00E0CC45 /* Images.xcassets */,
 				22B9EF841976AACA00E0CC45 /* Supporting Files */,
 			);
+			name = CardDeck;
 			path = BaseCollectionView;
 			sourceTree = "<group>";
 		};
@@ -107,12 +111,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		22B9EF9A1976AACB00E0CC45 /* BaseCollectionViewTests */ = {
+		22B9EF9A1976AACB00E0CC45 /* CardDeckTests */ = {
 			isa = PBXGroup;
 			children = (
-				22B9EF9D1976AACB00E0CC45 /* BaseCollectionViewTests.m */,
+				22B9EF9D1976AACB00E0CC45 /* CardDeckTests.m */,
 				22B9EF9B1976AACB00E0CC45 /* Supporting Files */,
 			);
+			name = CardDeckTests;
 			path = BaseCollectionViewTests;
 			sourceTree = "<group>";
 		};
@@ -127,9 +132,9 @@
 		22B9EFAC1976ACE100E0CC45 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				22B9EFA71976ACCC00E0CC45 /* BaseCollectionViewCell.h */,
-				22B9EFA81976ACCC00E0CC45 /* BaseCollectionViewCell.m */,
-				22B9EFA91976ACCC00E0CC45 /* BaseCollectionViewCell.xib */,
+				22B9EFA71976ACCC00E0CC45 /* CardDeckCell.h */,
+				22B9EFA81976ACCC00E0CC45 /* CardDeckCell.m */,
+				22B9EFA91976ACCC00E0CC45 /* CardDeckCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -157,6 +162,8 @@
 			children = (
 				22B9EFAF1976AF0C00E0CC45 /* CollectionViewFlowLayout.h */,
 				22B9EFB01976AF0C00E0CC45 /* CollectionViewFlowLayout.m */,
+				22BBFF1B19795946001F5CF0 /* CardDeckLayout.h */,
+				22BBFF1C19795946001F5CF0 /* CardDeckLayout.m */,
 			);
 			name = "Flow layout";
 			sourceTree = "<group>";
@@ -164,9 +171,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		22B9EF801976AACA00E0CC45 /* BaseCollectionView */ = {
+		22B9EF801976AACA00E0CC45 /* CardDeck */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 22B9EFA11976AACB00E0CC45 /* Build configuration list for PBXNativeTarget "BaseCollectionView" */;
+			buildConfigurationList = 22B9EFA11976AACB00E0CC45 /* Build configuration list for PBXNativeTarget "CardDeck" */;
 			buildPhases = (
 				22B9EF7D1976AACA00E0CC45 /* Sources */,
 				22B9EF7E1976AACA00E0CC45 /* Frameworks */,
@@ -176,14 +183,14 @@
 			);
 			dependencies = (
 			);
-			name = BaseCollectionView;
+			name = CardDeck;
 			productName = BaseCollectionView;
-			productReference = 22B9EF811976AACA00E0CC45 /* BaseCollectionView.app */;
+			productReference = 22B9EF811976AACA00E0CC45 /* CardDeck.app */;
 			productType = "com.apple.product-type.application";
 		};
-		22B9EF961976AACB00E0CC45 /* BaseCollectionViewTests */ = {
+		22B9EF961976AACB00E0CC45 /* CardDeckTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 22B9EFA41976AACB00E0CC45 /* Build configuration list for PBXNativeTarget "BaseCollectionViewTests" */;
+			buildConfigurationList = 22B9EFA41976AACB00E0CC45 /* Build configuration list for PBXNativeTarget "CardDeckTests" */;
 			buildPhases = (
 				22B9EF931976AACB00E0CC45 /* Sources */,
 				22B9EF941976AACB00E0CC45 /* Frameworks */,
@@ -194,9 +201,9 @@
 			dependencies = (
 				22B9EF991976AACB00E0CC45 /* PBXTargetDependency */,
 			);
-			name = BaseCollectionViewTests;
+			name = CardDeckTests;
 			productName = BaseCollectionViewTests;
-			productReference = 22B9EF971976AACB00E0CC45 /* BaseCollectionViewTests.xctest */;
+			productReference = 22B9EF971976AACB00E0CC45 /* CardDeckTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -217,7 +224,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 22B9EF7C1976AACA00E0CC45 /* Build configuration list for PBXProject "BaseCollectionView" */;
+			buildConfigurationList = 22B9EF7C1976AACA00E0CC45 /* Build configuration list for PBXProject "CardDeck" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -230,8 +237,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				22B9EF801976AACA00E0CC45 /* BaseCollectionView */,
-				22B9EF961976AACB00E0CC45 /* BaseCollectionViewTests */,
+				22B9EF801976AACA00E0CC45 /* CardDeck */,
+				22B9EF961976AACB00E0CC45 /* CardDeckTests */,
 			);
 		};
 /* End PBXProject section */
@@ -242,7 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22B9EF901976AACA00E0CC45 /* Main.storyboard in Resources */,
-				22B9EFAB1976ACCC00E0CC45 /* BaseCollectionViewCell.xib in Resources */,
+				22B9EFAB1976ACCC00E0CC45 /* CardDeckCell.xib in Resources */,
 				22B9EF921976AACA00E0CC45 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,7 +269,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				22B9EF8D1976AACA00E0CC45 /* MainViewController.m in Sources */,
-				22B9EFAA1976ACCC00E0CC45 /* BaseCollectionViewCell.m in Sources */,
+				22B9EFAA1976ACCC00E0CC45 /* CardDeckCell.m in Sources */,
+				22BBFF1D19795946001F5CF0 /* CardDeckLayout.m in Sources */,
 				22B9EFB11976AF0C00E0CC45 /* CollectionViewFlowLayout.m in Sources */,
 				22B9EF8A1976AACA00E0CC45 /* AppDelegate.m in Sources */,
 				22B9EF871976AACA00E0CC45 /* main.m in Sources */,
@@ -273,7 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B9EF9E1976AACB00E0CC45 /* BaseCollectionViewTests.m in Sources */,
+				22B9EF9E1976AACB00E0CC45 /* CardDeckTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +290,7 @@
 /* Begin PBXTargetDependency section */
 		22B9EF991976AACB00E0CC45 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 22B9EF801976AACA00E0CC45 /* BaseCollectionView */;
+			target = 22B9EF801976AACA00E0CC45 /* CardDeck */;
 			targetProxy = 22B9EF981976AACB00E0CC45 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -384,7 +392,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = BaseCollectionView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CardDeck;
 			};
 			name = Debug;
 		};
@@ -395,7 +403,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = BaseCollectionView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CardDeck;
 			};
 			name = Release;
 		};
@@ -414,7 +422,7 @@
 				INFOPLIST_FILE = BaseCollectionViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CardDeckTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
@@ -430,7 +438,7 @@
 				INFOPLIST_FILE = BaseCollectionViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = CardDeckTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
@@ -438,7 +446,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		22B9EF7C1976AACA00E0CC45 /* Build configuration list for PBXProject "BaseCollectionView" */ = {
+		22B9EF7C1976AACA00E0CC45 /* Build configuration list for PBXProject "CardDeck" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22B9EF9F1976AACB00E0CC45 /* Debug */,
@@ -447,21 +455,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		22B9EFA11976AACB00E0CC45 /* Build configuration list for PBXNativeTarget "BaseCollectionView" */ = {
+		22B9EFA11976AACB00E0CC45 /* Build configuration list for PBXNativeTarget "CardDeck" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22B9EFA21976AACB00E0CC45 /* Debug */,
 				22B9EFA31976AACB00E0CC45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		22B9EFA41976AACB00E0CC45 /* Build configuration list for PBXNativeTarget "BaseCollectionViewTests" */ = {
+		22B9EFA41976AACB00E0CC45 /* Build configuration list for PBXNativeTarget "CardDeckTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22B9EFA51976AACB00E0CC45 /* Debug */,
 				22B9EFA61976AACB00E0CC45 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

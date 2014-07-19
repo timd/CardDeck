@@ -7,13 +7,15 @@
 //
 
 #import "MainViewController.h"
-#import "BaseCollectionViewCell.h"
+#import "CardDeckCell.h"
 #import "CollectionViewFlowLayout.h"
+#import "CardDeckLayout.h"
 
 @interface MainViewController ()
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *sectionsArray;
 @property (nonatomic, strong) CollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) CardDeckLayout *cardLayout;
 @end
 
 @implementation MainViewController
@@ -39,20 +41,40 @@
 #pragma mark Setup methods
 
 - (void)setupData {
-    NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:50];
-    for (int count = 0; count < 50; count++) {
-        [tempArray addObject:[NSString stringWithFormat:@"Item %d", count]];
+    
+    NSInteger sectionCount = 4;
+    self.sectionsArray = [[NSMutableArray alloc] initWithCapacity:sectionCount];
+    
+    NSInteger rowCount = 25;
+    
+    for (int section = 0; section < sectionCount; section++) {
+        
+        NSMutableArray *innerArray = [[NSMutableArray alloc] initWithCapacity:rowCount];
+        
+        for (int row = 0; row < rowCount; row++) {
+            
+            NSString *item = [NSString stringWithFormat:@"Section %d Item %d", section, row];
+            [innerArray addObject:item];
+        }
+        
+        [self.sectionsArray addObject:innerArray];
+        
     }
     
-    self.dataArray = tempArray;
 }
 
 - (void)setupCollectionView {
-    [self.collectionView registerClass:[BaseCollectionViewCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
+    [self.collectionView registerClass:[CardDeckCell class] forCellWithReuseIdentifier:@"CellIdentifier"];
     
-    self.flowLayout = [[CollectionViewFlowLayout alloc] init];
-    [self.flowLayout setItemSize:CGSizeMake(100.0f, 100.0f)];
-    [self.collectionView setCollectionViewLayout:self.flowLayout];
+    self.cardLayout = [[CardDeckLayout alloc] init];
+    [self.cardLayout setItemSize:CGSizeMake(150.0f, 150.0f)];
+    [self.cardLayout setCenterDelta:100];
+    [self.cardLayout setRotationDelta:45];
+    [self.collectionView setCollectionViewLayout:self.cardLayout];
+    
+//    self.flowLayout = [[CollectionViewFlowLayout alloc] init];
+//    [self.flowLayout setItemSize:CGSizeMake(100.0f, 100.0f)];
+//    [self.collectionView setCollectionViewLayout:self.flowLayout];
     
     [self.collectionView setContentInset:UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f)];
 }
@@ -60,20 +82,35 @@
 #pragma mark - UICollectionView methods
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
+    return [self.sectionsArray count];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.dataArray count];
+
+    NSMutableArray *innerArray = [self.sectionsArray objectAtIndex:section];
+    return [innerArray count];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    BaseCollectionViewCell *cell = (BaseCollectionViewCell *)[self.collectionView dequeueReusableCellWithReuseIdentifier:@"CellIdentifier" forIndexPath:indexPath];
+    CardDeckCell *cell = (CardDeckCell *)[self.collectionView dequeueReusableCellWithReuseIdentifier:@"CellIdentifier" forIndexPath:indexPath];
     
-    cell.contentString = [self.dataArray objectAtIndex:indexPath.row];
+    NSMutableArray *innerArray = [self.sectionsArray objectAtIndex:indexPath.section];
+    
+    cell.contentString = [innerArray objectAtIndex:indexPath.row];
+    
     [cell prepareForReuse];
     
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    CardDeckCell *cell = (CardDeckCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    [cell setBackgroundColor:[UIColor redColor]];
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    CardDeckCell *cell = (CardDeckCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    [cell setBackgroundColor:[UIColor blueColor]];
 }
 
 @end

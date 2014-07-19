@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Charismatic Megafauna Ltd. All rights reserved.
 //
 
-#import "BaseCollectionViewCell.h"
+#import "CardDeckCell.h"
 
-@interface BaseCollectionViewCell ()
+@interface CardDeckCell ()
 @property (nonatomic, weak) IBOutlet UILabel *contentLabel;
 @end
 
-@implementation BaseCollectionViewCell
+@implementation CardDeckCell
 
 - (void)awakeFromNib
 {
@@ -25,7 +25,7 @@
     
     if (self) {
         // Initialization code
-        NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:@"BaseCollectionViewCell" owner:self options:nil];
+        NSArray *arrayOfViews = [[NSBundle mainBundle] loadNibNamed:@"CardDeckCell" owner:self options:nil];
         
         if ([arrayOfViews count] < 1) {
             return nil;

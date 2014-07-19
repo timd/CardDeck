@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BaseCollectionViewCell : UICollectionViewCell
+@interface CardDeckCell : UICollectionViewCell
 @property (nonatomic, copy) NSString *contentString;
 @end

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "22B9EF801976AACA00E0CC45"
-               BuildableName = "BaseCollectionView.app"
-               BlueprintName = "BaseCollectionView"
-               ReferencedContainer = "container:BaseCollectionView.xcodeproj">
+               BuildableName = "CardDeck.app"
+               BlueprintName = "CardDeck"
+               ReferencedContainer = "container:CardDeck.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "22B9EF961976AACB00E0CC45"
-               BuildableName = "BaseCollectionViewTests.xctest"
-               BlueprintName = "BaseCollectionViewTests"
-               ReferencedContainer = "container:BaseCollectionView.xcodeproj">
+               BuildableName = "CardDeckTests.xctest"
+               BlueprintName = "CardDeckTests"
+               ReferencedContainer = "container:CardDeck.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "22B9EF801976AACA00E0CC45"
-            BuildableName = "BaseCollectionView.app"
-            BlueprintName = "BaseCollectionView"
-            ReferencedContainer = "container:BaseCollectionView.xcodeproj">
+            BuildableName = "CardDeck.app"
+            BlueprintName = "CardDeck"
+            ReferencedContainer = "container:CardDeck.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "22B9EF801976AACA00E0CC45"
-            BuildableName = "BaseCollectionView.app"
-            BlueprintName = "BaseCollectionView"
-            ReferencedContainer = "container:BaseCollectionView.xcodeproj">
+            BuildableName = "CardDeck.app"
+            BlueprintName = "CardDeck"
+            ReferencedContainer = "container:CardDeck.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "22B9EF801976AACA00E0CC45"
-            BuildableName = "BaseCollectionView.app"
-            BlueprintName = "BaseCollectionView"
-            ReferencedContainer = "container:BaseCollectionView.xcodeproj">
+            BuildableName = "CardDeck.app"
+            BlueprintName = "CardDeck"
+            ReferencedContainer = "container:CardDeck.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:BaseCollectionView.xcodeproj">
+      location = "self:CardDeck.xcodeproj">
    </FileRef>
 </Workspace>
