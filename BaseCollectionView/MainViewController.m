@@ -153,16 +153,29 @@
     
     if (panRecognizer.state == UIGestureRecognizerStateEnded) {
 
-        // Move the dropped cell to the appropriate pile
+        // Figure out where the card was dropped
         NSInteger dropQuadrant = [self detectWhichQuadrantForDropCoordinates:locationPoint];
+        
+        // If it was dropped in the SAME quadrant, then pretend nothing ever happened
+        NSIndexPath *originalIndexPath = [self.collectionView indexPathForCell:self.movingCell];
+        
+        if (dropQuadrant == originalIndexPath.section) {
 
-        [self moveCellAtIndexPath:[self.collectionView indexPathForCell:self.movingCell] toQuadrant:dropQuadrant];
+            [self.movingCell setAlpha:1.0f];
+            
+        } else {
+            
+            // Move the dropped cell to the appropriate pile
+            [self moveCellAtIndexPath:[self.collectionView indexPathForCell:self.movingCell] toQuadrant:dropQuadrant];
+            
+            // Clear the reference to the selected cell
+            self.movingCell = nil;
+            
+        }
         
         // Remove the fake cell
         [self.movingCellImage removeFromSuperview];
         
-        // Clear the reference to the selected cell
-        self.movingCell = nil;
     }
 }
 
