@@ -13,5 +13,5 @@
 @property (nonatomic) CGSize itemSize;
 @property (nonatomic) int centerDelta;
 @property (nonatomic) int rotationDelta;
-
+@property (nonatomic) NSIndexPath *indexPathOfUpdatedCard;
 @end                                           

@@ -10,6 +10,7 @@
 
 @interface CardDeckLayout ()
 @property (nonatomic, strong) NSMutableArray *attributesArray;
+@property (nonatomic, strong) NSMutableArray *previousAttributesArray;
 @end
 
 @implementation CardDeckLayout
@@ -17,6 +18,7 @@
 -(instancetype)init {
     if (self = [super init]) {
         self.attributesArray = [[NSMutableArray alloc] init];
+        self.previousAttributesArray = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -25,6 +27,8 @@
 -(void)prepareLayout {
 
     // Clear out any old attributes
+    [self.previousAttributesArray removeAllObjects];
+    [self.previousAttributesArray addObjectsFromArray:self.attributesArray];
     [self.attributesArray removeAllObjects];
     
     // Prepare stuff
@@ -48,42 +52,59 @@
         
         for (int itemCount = 0; itemCount < numberOfItemsInSection; itemCount++) {
             
+            UICollectionViewLayoutAttributes *attributes = nil;
             NSIndexPath *indexPathForItem = [NSIndexPath indexPathForItem:itemCount inSection:section];
             
-            UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPathForItem];
+            // Check if there are existing center and rotation attributes for this item,
+            // and use these preexisting ones if they already exist
+            NSInteger indexOfMatchingAttributes = [self.previousAttributesArray indexOfObjectPassingTest:^BOOL(UICollectionViewLayoutAttributes *attrs, NSUInteger idx, BOOL *stop) {
+                NSComparisonResult comparison = [attrs.indexPath compare:indexPathForItem];
+                return (comparison == NSOrderedSame);
+            }];
             
-            // now calculate center
-            switch (indexPathForItem.section) {
-                case 0:
-                    attributes.center = [self offsetCenterFromOriginal:topLeft];
-                    break;
+            if (indexOfMatchingAttributes == NSNotFound) {
 
-                case 1:
-                    attributes.center = [self offsetCenterFromOriginal:topRight];
-                    break;
+                attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPathForItem];
+                
+                // now calculate center
+                switch (indexPathForItem.section) {
+                    case 0:
+                        attributes.center = [self offsetCenterFromOriginal:topLeft];
+                        break;
+                        
+                    case 1:
+                        attributes.center = [self offsetCenterFromOriginal:topRight];
+                        break;
+                        
+                    case 2:
+                        attributes.center = [self offsetCenterFromOriginal:bottomLeft];
+                        break;
+                        
+                    case 3:
+                        attributes.center = [self offsetCenterFromOriginal:bottomRight];
+                        break;
+                        
+                    default:
+                        break;
+                }
+                
+                // Calculate rotation
+                
+                attributes.transform3D = CATransform3DMakeRotation([self rotationAngle], 0.0, 0.0, 1.0);
+                //            attributes.transform = CGAffineTransformMakeRotation([self rotationAngle]);
+                
+                // Set zIndex
+                attributes.zIndex = itemCount;
+                
+                // set item size
+                attributes.size = self.itemSize;
 
-                case 2:
-                    attributes.center = [self offsetCenterFromOriginal:bottomLeft];
-                    break;
-
-                case 3:
-                    attributes.center = [self offsetCenterFromOriginal:bottomRight];
-                    break;
-
-                default:
-                    break;
+            } else {
+                
+                // Can recycle the existing ones!
+                attributes = [self.previousAttributesArray objectAtIndex:indexOfMatchingAttributes];
+                
             }
-            
-            // Calculate rotation
-            
-            attributes.transform3D = CATransform3DMakeRotation([self rotationAngle], 0.0, 0.0, 1.0);
-//            attributes.transform = CGAffineTransformMakeRotation([self rotationAngle]);
-
-            // Set zIndex
-            attributes.zIndex = itemCount;
-            
-            // set item size
-            attributes.size = self.itemSize;
             
             [self.attributesArray addObject:attributes];
             

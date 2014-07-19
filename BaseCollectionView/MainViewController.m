@@ -213,6 +213,7 @@
 }
 
 -(void)moveCellAtIndexPath:(NSIndexPath *)oldIndexPath toQuadrant:(NSInteger)quadrant {
+
     
     // Create new index path
     // Get current count of items in the recipient array
@@ -229,6 +230,10 @@
     
     // Remove original item from the donor array
     [donorArray removeObject:itemToMove];
+    
+    // Tell the layout which indexPath has been removed,
+    // so it won't get returned
+    [self.cardLayout setIndexPathOfUpdatedCard:oldIndexPath];
     
     [self.collectionView performBatchUpdates:^{
         
