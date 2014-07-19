@@ -12,15 +12,17 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebU-5U-hee" userLabel="BackgroundKnockout">
-                        <rect key="frame" x="3" y="3" width="144" height="144"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="senka" translatesAutoresizingMaskIntoConstraints="NO" id="4Z2-mz-QWo">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="hfi-HQ-UVV"/>
+                            <constraint firstAttribute="height" constant="150" id="xWR-ge-4oV"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpP-if-DYX">
-                        <rect key="frame" x="54" y="64" width="42" height="21"/>
+                        <rect key="frame" x="54" y="109" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -28,12 +30,10 @@
             </view>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="fpP-if-DYX" secondAttribute="centerY" constant="0.5" id="6gs-Fi-ZA7"/>
-                <constraint firstItem="ebU-5U-hee" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="OTk-Um-ASM"/>
-                <constraint firstAttribute="centerX" secondItem="fpP-if-DYX" secondAttribute="centerX" id="Xyy-yO-0BC"/>
-                <constraint firstAttribute="trailing" secondItem="ebU-5U-hee" secondAttribute="trailing" constant="3" id="fAp-vl-67u"/>
-                <constraint firstAttribute="bottom" secondItem="ebU-5U-hee" secondAttribute="bottom" constant="3" id="t2G-fS-6cG"/>
-                <constraint firstItem="ebU-5U-hee" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="wdP-g8-04Y"/>
+                <constraint firstAttribute="bottom" secondItem="fpP-if-DYX" secondAttribute="bottom" constant="20" id="C9f-hi-9Ee"/>
+                <constraint firstItem="4Z2-mz-QWo" firstAttribute="centerX" secondItem="fpP-if-DYX" secondAttribute="centerX" id="JBI-8M-QYq"/>
+                <constraint firstItem="fpP-if-DYX" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="KdY-wU-8Bb"/>
+                <constraint firstItem="4Z2-mz-QWo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ury-us-kGo"/>
             </constraints>
             <connections>
                 <outlet property="contentLabel" destination="fpP-if-DYX" id="zLk-pg-j3I"/>
@@ -41,4 +41,7 @@
             <point key="canvasLocation" x="456" y="317"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="senka" width="100" height="100"/>
+    </resources>
 </document>
