@@ -47,11 +47,11 @@
     NSInteger sectionCount = 4;
     self.sectionsArray = [[NSMutableArray alloc] initWithCapacity:sectionCount];
     
-    NSInteger rowCount = 25;
+    NSInteger rowCount = 5;
     
     for (int section = 0; section < sectionCount; section++) {
         
-        NSMutableArray *innerArray = [[NSMutableArray alloc] initWithCapacity:rowCount];
+        NSMutableArray *innerArray = [[NSMutableArray alloc] init];
         
         for (int row = 0; row < rowCount; row++) {
             
@@ -83,6 +83,7 @@
 #pragma mark - UICollectionView methods
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    [self.cardLayout invalidateLayout];
     return [self.sectionsArray count];
 }
 
@@ -108,15 +109,8 @@
     return cell;
 }
 
-//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    CardDeckCell *cell = (CardDeckCell *)[collectionView cellForItemAtIndexPath:indexPath];
-//    [cell.layer setBorderColor:[UIColor redColor].CGColor];
-//}
-//
-//-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    CardDeckCell *cell = (CardDeckCell *)[collectionView cellForItemAtIndexPath:indexPath];
-//    [cell.layer setBorderColor:[UIColor blueColor].CGColor];
-//}
+#pragma mark -
+#pragma mark Interaction methods
 
 -(void)didPan:(UIPanGestureRecognizer *)panRecognizer {
     
@@ -159,8 +153,10 @@
     
     if (panRecognizer.state == UIGestureRecognizerStateEnded) {
 
-        // Make the cell reappear
-        [self.movingCell setAlpha:1.0f];
+        // Move the dropped cell to the appropriate pile
+        NSInteger dropQuadrant = [self detectWhichQuadrantForDropCoordinates:locationPoint];
+
+        [self moveCellAtIndexPath:[self.collectionView indexPathForCell:self.movingCell] toQuadrant:dropQuadrant];
         
         // Remove the fake cell
         [self.movingCellImage removeFromSuperview];
@@ -168,6 +164,69 @@
         // Clear the reference to the selected cell
         self.movingCell = nil;
     }
+}
+
+#pragma mark -
+#pragma mark Movement methods
+
+-(NSInteger)detectWhichQuadrantForDropCoordinates:(CGPoint)drop {
+    
+    float xBoundary = self.collectionView.bounds.size.width / 2;
+    float yBoundary = self.collectionView.bounds.size.height / 2;
+    
+    CGRect topLeft = CGRectMake(0, 0, xBoundary, yBoundary);
+    CGRect topRight = CGRectMake(xBoundary, 0, xBoundary, yBoundary);
+    CGRect bottomLeft = CGRectMake(0, yBoundary, xBoundary, yBoundary);
+    CGRect bottomRight = CGRectMake(xBoundary, yBoundary, xBoundary, yBoundary);
+    
+    if (CGRectContainsPoint(topLeft, drop)) {
+        return 0;
+    }
+    
+    if (CGRectContainsPoint(topRight, drop)) {
+        return 1;
+    }
+    
+    if (CGRectContainsPoint(bottomLeft, drop)) {
+        return 2;
+    }
+    
+    if (CGRectContainsPoint(bottomRight, drop)) {
+        return 3;
+    }
+    
+    return 4;
+    
+}
+
+-(void)moveCellAtIndexPath:(NSIndexPath *)oldIndexPath toQuadrant:(NSInteger)quadrant {
+    
+    // Create new index path
+    // Get current count of items in the recipient array
+    NSMutableArray *recipientArray = [self.sectionsArray objectAtIndex:quadrant];
+    NSInteger currentCount = [recipientArray count];
+    NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:currentCount inSection:quadrant];
+    
+    // Retrieve original item
+    NSMutableArray *donorArray = [self.sectionsArray objectAtIndex:oldIndexPath.section];
+    id itemToMove = [donorArray objectAtIndex:oldIndexPath.row];
+    
+    // Add itemToMove to the correct inner array
+    [recipientArray addObject:itemToMove];
+    
+    // Remove original item from the donor array
+    [donorArray removeObject:itemToMove];
+    
+    [self.collectionView performBatchUpdates:^{
+        
+        [self.collectionView deleteItemsAtIndexPaths:@[oldIndexPath]];
+        [self.collectionView insertItemsAtIndexPaths:@[newIndexPath]];
+        
+    } completion:^(BOOL finished) {
+        //
+    }];
+    
+
 }
 
 

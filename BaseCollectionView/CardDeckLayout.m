@@ -24,6 +24,9 @@
 
 -(void)prepareLayout {
 
+    // Clear out any old attributes
+    [self.attributesArray removeAllObjects];
+    
     // Prepare stuff
     NSInteger numberOfSections = [self.collectionView numberOfSections];
 
