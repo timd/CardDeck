@@ -14,8 +14,10 @@
 @interface MainViewController ()
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *sectionsArray;
-@property (nonatomic, strong) CollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong) CardDeckLayout *cardLayout;
+
+@property (nonatomic, strong) CardDeckCell *movingCell;
+@property (nonatomic, strong) UIImageView *movingCellImage;
 @end
 
 @implementation MainViewController
@@ -72,11 +74,10 @@
     [self.cardLayout setRotationDelta:45];
     [self.collectionView setCollectionViewLayout:self.cardLayout];
     
-//    self.flowLayout = [[CollectionViewFlowLayout alloc] init];
-//    [self.flowLayout setItemSize:CGSizeMake(100.0f, 100.0f)];
-//    [self.collectionView setCollectionViewLayout:self.flowLayout];
-    
     [self.collectionView setContentInset:UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f)];
+    
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
+    [self.collectionView addGestureRecognizer:panRecognizer];
 }
 
 #pragma mark - UICollectionView methods
@@ -100,17 +101,74 @@
     
     [cell prepareForReuse];
     
+    [cell.layer setCornerRadius:10.0f];
+    [cell.layer setBorderWidth:3.0f];
+    [cell.layer setBorderColor:[UIColor blueColor].CGColor];
+    
     return cell;
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    CardDeckCell *cell = (CardDeckCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    [cell setBackgroundColor:[UIColor redColor]];
+//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    CardDeckCell *cell = (CardDeckCell *)[collectionView cellForItemAtIndexPath:indexPath];
+//    [cell.layer setBorderColor:[UIColor redColor].CGColor];
+//}
+//
+//-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    CardDeckCell *cell = (CardDeckCell *)[collectionView cellForItemAtIndexPath:indexPath];
+//    [cell.layer setBorderColor:[UIColor blueColor].CGColor];
+//}
+
+-(void)didPan:(UIPanGestureRecognizer *)panRecognizer {
+    
+    CGPoint locationPoint = [panRecognizer locationInView:self.collectionView];
+    
+    if (panRecognizer.state == UIGestureRecognizerStateBegan) {
+        
+        // Get a reference to the cell that's being "moved"
+        NSIndexPath *indexPathOfMovingCell = [self.collectionView indexPathForItemAtPoint:locationPoint];
+        self.movingCell = (CardDeckCell *)[self.collectionView cellForItemAtIndexPath:indexPathOfMovingCell];
+        
+        // Get current rotation from the layout
+        CATransform3D transform = self.movingCell.layer.transform;
+
+        // Create image representation of the cell
+        UIGraphicsBeginImageContext(self.movingCell.bounds.size);
+        [self.movingCell.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *cellImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        // Create an imageView to hold the image
+        self.movingCellImage = [[UIImageView alloc] initWithImage:cellImage];
+        [self.movingCellImage setCenter:locationPoint];
+        [self.movingCellImage setAlpha:0.75f];
+        
+        // Rotate it so that it matches the cell
+        self.movingCellImage.layer.transform = transform;
+        
+        // Hide the cell that's being moved
+        [self.movingCell setAlpha:0.0f];
+        
+        // Add the fake cell to the collection view
+        [self.collectionView addSubview:self.movingCellImage];
+        
+    }
+    
+    if (panRecognizer.state == UIGestureRecognizerStateChanged) {
+        [self.movingCellImage setCenter:locationPoint];
+    }
+    
+    if (panRecognizer.state == UIGestureRecognizerStateEnded) {
+
+        // Make the cell reappear
+        [self.movingCell setAlpha:1.0f];
+        
+        // Remove the fake cell
+        [self.movingCellImage removeFromSuperview];
+        
+        // Clear the reference to the selected cell
+        self.movingCell = nil;
+    }
 }
 
--(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    CardDeckCell *cell = (CardDeckCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    [cell setBackgroundColor:[UIColor blueColor]];
-}
 
 @end

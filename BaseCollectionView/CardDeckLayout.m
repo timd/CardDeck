@@ -72,7 +72,9 @@
             }
             
             // Calculate rotation
-            attributes.transform = CGAffineTransformMakeRotation([self rotationAngle]);
+            
+            attributes.transform3D = CATransform3DMakeRotation([self rotationAngle], 0.0, 0.0, 1.0);
+//            attributes.transform = CGAffineTransformMakeRotation([self rotationAngle]);
 
             // Set zIndex
             attributes.zIndex = itemCount;
